@@ -7,6 +7,11 @@ declare interface AppOptions {
   cache?: LRUCache<string, string>
 }
 
+declare interface getSignedJsonWebTokenOptions {
+  id: number
+  privateKey: string
+}
+
 declare interface getInstallationAccessTokenOptions {
   installationId: number
 }
@@ -15,7 +20,7 @@ declare interface getInstallationAccessTokenOptions {
 // In TypeScript, you cannot use the `new` keyword on functions (excluding old-style classes using functions and prototype), only on classes
 declare class App {
   constructor(options: AppOptions)
-  public getSignedJsonWebToken(): string
+  public getSignedJsonWebToken(options?: getSignedJsonWebTokenOptions): string
   public getInstallationAccessToken(options?: getInstallationAccessTokenOptions): Promise<string>
 }
 
